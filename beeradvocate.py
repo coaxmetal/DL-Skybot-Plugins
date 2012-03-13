@@ -1,7 +1,7 @@
 from util import hook, http
 
 
-def get_beer(beer):
+def get_beer(inp):
     """ search beeradvocate.com """
 
     search_url = "http://beeradvocate.com/search"
