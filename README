@@ -1,3 +1,5 @@
-A plugin for skybot (https://github.com/rmmh/skybot) to search beeradvocate.com
+A small collection of plugins for skybot (an irc bot, see: https://github.com/rmmh/skybot).
 
-Beeradvocate's search kind of sucks though.
+includes:
+beeradvocate.py -- searches beeradvocate.com and displays information and a link
+darksouls.py -- searches the darksouls.wikidot.com
