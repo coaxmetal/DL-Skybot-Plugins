@@ -21,7 +21,7 @@ def get_wiki_article(inp):
 
 @hook.command
 def darksouls(inp):
-    """ search darksouls.wikidot.com """
+    """ darksouls <query> -- Searches DarkSouls Wiki for <query> """
     return get_wiki_article(inp)
 
 if __name__ == "__main__":
