@@ -5,9 +5,9 @@ result_xpath = "/html/body[@id='html-body']/div[@id='container-wrap-wrap']/div[@
 search_url = "http://darksouls.wikidot.com/search:site/q/%s"
 
 def get_wiki_article(inp):
-    """ search darksouls.wikidot.com """
-
     # using scraping instead of the wikidot api because it sucks
+    # it doesn't have a text search, though the site might just be using the api method to select tags anyway
+    
     results = http.get_html(search_url % http.quote_plus(inp))
     
     try:
@@ -21,6 +21,7 @@ def get_wiki_article(inp):
 
 @hook.command
 def darksouls(inp):
+    """ search darksouls.wikidot.com """
     return get_wiki_article(inp)
 
 if __name__ == "__main__":
