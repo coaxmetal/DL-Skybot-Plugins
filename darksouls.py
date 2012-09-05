@@ -1,7 +1,7 @@
 from util import hook, http
 
 # constants
-result_xpath = "/html/body[@id='html-body']/div[@id='container-wrap-wrap']/div[@id='container-wrap']/div[@id='container']/div[@id='content-wrap']/div[@id='main-content']/div[@id='page-content']/div[@class='search-box']/div[@class='search-results']/div[@class='item'][1]/div[@class='title']/a"
+result_xpath = "//div[@id='page-content']/div[@class='search-box']/div[@class='search-results']/div[@class='item'][1]/div[@class='title']/a"
 search_url = "http://darksouls.wikidot.com/search:site/q/%s"
 
 def get_wiki_article(inp):
