@@ -1,16 +1,27 @@
 from util import hook, http
+from urllib import urlencode
 
 
 def get_beer(inp):
     """ search beeradvocate.com """
 
-    search_url = "http://beeradvocate.com/search?q=%s"
+    search_url = "http://beeradvocate.com/search"
     base_url = "http://beeradvocate.com"
 
-    results = http.get_html(search_url % http.quote_plus(inp))
+    try:
+        xfToken = http.get_html(base_url).xpath("//fieldset[@id='QuickSearch']/form[@class='formPopup']/input")[0].value
+    except IndexError:
+        return "Unable to retrieve token."
+
+    post_dict = {
+        'q' : inp,
+        'qt' : 'beer',
+        '_xfToken' : xfToken,
+    }
+    results = http.get_html(search_url, post_data=urlencode(post_dict))
     
     try:
-        result = results.xpath("//td[@id='mainContent']/div[2]/ul/li[1]")[0]
+        result = results.xpath("//div[@id='content']/div[@class='pageWidth']/div[@class='pageContent']/div[@class='mainContainer']/div[@class='mainContent']/fieldset/div[@id='baContent']/div[2]/ul/li[1]")[0]
     except IndexError:
         return "No Results"
 
