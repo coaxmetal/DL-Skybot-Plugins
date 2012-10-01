@@ -8,15 +8,9 @@ def get_beer(inp):
     search_url = "http://beeradvocate.com/search"
     base_url = "http://beeradvocate.com"
 
-    try:
-        xfToken = http.get_html(base_url).xpath("//fieldset[@id='QuickSearch']/form[@class='formPopup']/input")[0].value
-    except IndexError:
-        return "Unable to retrieve token."
-
     post_dict = {
         'q' : inp,
         'qt' : 'beer',
-        '_xfToken' : xfToken,
     }
     results = http.get_html(search_url, post_data=urlencode(post_dict))
     
